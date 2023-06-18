@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Domain_Service.Models.CategoryQuestion>
+@{
+    Layout = null;
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>عنوان پرسشنامه</th>
+        <th></th>
+    </tr>
+    @if (Model.Count() > 0)
+    {
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td> @item.Title</td>
+                <td>
+                    <button type="button" class="btn btn-block btn-outline-primary btn-sm col-6" onclick="EditeQuestion(@item.Id)">ویرایش</button>
+                </td>
+                <td>
+                    @*<a href="#" class="demoLink htmlPopup">فرم پاپ آپ</a>*@
+                    <button type="button" class="btn btn-block btn-outline-success btn-sm col-6" onclick="popupr(@item.Id)">اضافه کردن سوال</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-block btn-outline-danger btn-sm col-6" onclick="DelitQuestion(@item.Id)">حذف</button>
+
+                </td>
+            </tr>
+
+        }
+    }
+</table>

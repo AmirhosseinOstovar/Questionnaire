@@ -1,0 +1,78 @@
+﻿@model Domain_Service.Models.Question
+@{
+    Layout = null;
+}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>سوال ها</h1>
+            </div>
+            <div class="col-sm-6">
+                <h2>@Model.CategoryQuestion.Title</h2>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<div class="card-body">
+    <form id="ResponseForm">
+        <input type="hidden" id="questionId" value="@Model.Id" name="QuestionId" />
+        <!-- text input -->
+        <div class="form-group">
+            <label>نام</label>
+            <input type="text" name="Name"  id="name"class="form-control">
+        </div>
+        <div class="form-group">
+            <label>نام خانوادگی</label>
+            <input type="text" name="Family" id="family" class="form-control">
+        </div>
+
+        @if (Model.questionType == 0)
+        {
+            <div class="form-group">
+                <div class="form-group">
+                    @foreach (var item in Model.MultipleOptionsResponses)
+                    {
+                        <label class="radio-inline mr-3">
+                            <input type="radio" value="@item.Id" id="answer" name="Answer">@item.Title
+                        </label>
+                    }
+                </div>
+            </div>
+        }
+        @if (Model.questionType==Domain_Service.Models.QuestionType.text)
+        {
+            <div class="form-group">
+                <label>متن</label>
+                <textarea name="Answer" class="form-control" rows="3" id="answer" placeholder="متن">
+
+                </textarea>
+            </div>
+        }
+        @if (Model.questionType == Domain_Service.Models.QuestionType.numerical)
+        {
+            <div class="form-group">
+                <label>عدد</label>
+                <input type="number" name="Answer" id="answer">
+            </div>
+        }
+        @if (Model.questionType == Domain_Service.Models.QuestionType.uploadfile)
+        {
+            <div class="form-group">
+                <label for="exampleInputFile">ارسال فایل</label>
+                <div class="input-group">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="exampleInputFile" name="Answer">
+                        <label class="custom-file-label" for="exampleInputFile">انتخاب فایل</label>
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="card-footer">
+            <button type="button" onclick="AddresponseForm()" class="btn btn-primary">ارسال</button>
+        </div>
+    </form>
+</div>

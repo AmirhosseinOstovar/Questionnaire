@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Domain_Service.Models.categoryresponse>
+@{
+    Layout = null;
+}
+<h2>
+    @ViewBag.category
+</h2>
+<table class="table table-hover">
+    <tr>
+        <th>نام</th>
+        <th>نام خانوادگی</th>
+        <th>تاریخ پاسخ</th>
+    </tr>
+    @if (Model.Count() > 0)
+    {
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td> @item.response.Name</td>
+                <td> @item.response.Family</td>
+                <td> @item.response.Insertdate.ToString("D")</td>
+                <td>
+                    <button type="button" class="btn btn-block btn-outline-success btn-sm col-6" onclick="ShowResponses(@item.Responseid)">مشاهده</button>
+
+                </td>
+            </tr>
+
+        }
+    }
+</table>

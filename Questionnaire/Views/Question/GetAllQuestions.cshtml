@@ -1,0 +1,53 @@
+﻿
+
+
+
+@{
+    ViewData["Title"] = "Home Page";
+    var category = (Domain_Service.Models.CategoryQuestion)ViewBag.Category;
+}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>سوال ها</h1>
+            </div>
+            <div class="col-sm-6">
+                <h2>@category.Title</h2>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="container-fluid">
+
+
+        <div class="row">
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <button type="button" class="btn btn-block btn-success btn" onclick="popupr(@category.Id)">ایجاد سوال جدید </button>
+
+                        <div class="card-tools">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <div class="input-group-append">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.card-header -->
+                    <div id="Question" class="card-body table-responsive p-0">
+                        @await Html.PartialAsync("_ShowQuestion")
+
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div><!-- /.row -->
+    </div>
+
+</section>
+

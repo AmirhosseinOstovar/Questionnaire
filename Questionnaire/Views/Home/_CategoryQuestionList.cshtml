@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Domain_Service.ViewModel.CategoryQuestionVm>
+@{
+    Layout = null;
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>عنوان پرسشنامه</th>
+        <th>تعداد پاسخ ها</th>
+    </tr>
+    @if (Model.Count() > 0)
+    {
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td> @item.Title</td>
+                <td> @item.CountResponse</td>
+                <td>
+                    <button type="button" class="btn btn-block btn-outline-danger btn-sm col-6" onclick="Responses(@item.Id)">پاسخ ها</button>
+
+                </td>
+            </tr>
+
+        }
+    }
+</table>

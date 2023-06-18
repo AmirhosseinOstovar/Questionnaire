@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Domain_Service.Models.Question>
+@{
+    Layout = null;
+}
+<div class="card-body table-responsive p-0">
+
+    <table class="table table-hover">
+        <tr>
+            <th>عنوان پرسشنامه</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td> @item.Title</td>
+                <td>
+                    <button type="button" class="btn btn-block btn-outline-primary btn-sm col-6" onclick="EditeQuestionmodel(@item.Id)">ویرایش</button>
+                </td>
+                <td>
+
+                    <button type="button" class="btn btn-block btn-outline-success btn-sm col-6" onclick="CreatResponse(@item.Id)">پاسخ دادن به سوال</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-block btn-outline-danger btn-sm col-6" onclick="DelitQuestionmodel(@item.Id,@item.CategoryQuestionId)">حذف</button>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
